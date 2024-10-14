@@ -1,9 +1,10 @@
-[gd_scene load_steps=14 format=3 uid="uid://cwjk0pupmek41"]
+[gd_scene load_steps=15 format=3 uid="uid://cwjk0pupmek41"]
 
 [ext_resource type="Script" path="res://scripts/level.gd" id="1_8r4a7"]
 [ext_resource type="PackedScene" uid="uid://jmbey8coab1u" path="res://scenes/flappy.tscn" id="1_o2b5u"]
 [ext_resource type="Script" path="res://scripts/kill_box.gd" id="3_m6w3k"]
 [ext_resource type="PackedScene" uid="uid://ckw083p4unkkc" path="res://scenes/pipes.tscn" id="4_6ittn"]
+[ext_resource type="PackedScene" uid="uid://mihhfluk8euv" path="res://scenes/cloud.tscn" id="5_6q38x"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_q0qgt"]
 size = Vector3(36, 0.1, 36)
@@ -26,7 +27,7 @@ font_size = 100
 outline_size = 12
 outline_color = Color(0, 0, 0, 1)
 
-[sub_resource type="LabelSettings" id="LabelSettings_ov1jd"]
+[sub_resource type="LabelSettings" id="LabelSettings_25bqh"]
 font_size = 140
 outline_size = 12
 outline_color = Color(0, 0, 0, 1)
@@ -95,20 +96,20 @@ horizontal_alignment = 1
 [node name="GameOverCanvas" type="CanvasLayer" parent="."]
 visible = false
 
-[node name="GameOverLabel" type="Label" parent="GameOverCanvas"]
+[node name="Label" type="Label" parent="GameOverCanvas"]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -380.0
-offset_top = -476.0
-offset_right = 380.0
-offset_bottom = -284.0
+offset_left = -271.5
+offset_top = -444.5
+offset_right = 271.5
+offset_bottom = -307.5
 grow_horizontal = 2
 grow_vertical = 2
 text = "Game Over"
-label_settings = SubResource("LabelSettings_ov1jd")
+label_settings = SubResource("LabelSettings_25bqh")
 
 [node name="Rect" type="ColorRect" parent="GameOverCanvas"]
 anchors_preset = 8
@@ -193,5 +194,8 @@ grow_horizontal = 0
 text = "0"
 label_settings = SubResource("LabelSettings_8xsgq")
 horizontal_alignment = 2
+
+[node name="cloud" parent="." instance=ExtResource("5_6q38x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, -5, -40)
 
 [connection signal="body_entered" from="Ground" to="Ground" method="_on_body_entered"]

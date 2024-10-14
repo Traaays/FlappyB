@@ -9,7 +9,7 @@ var SPEED = 3.0
 var JUMP_VELOCITY = 5
 
 func _physics_process(delta):
-	if $"../GameOverCanvas".visible == false:
+	if get_parent().game_over_canvas.visible == false:
 		velocity += get_gravity() * delta
 	
 		if Input.is_action_just_pressed("flap"):
@@ -19,11 +19,11 @@ func _physics_process(delta):
 		move_and_slide()
 	else:
 		if Input.is_action_just_pressed("flap"):
-			get_tree().reload_current_scene()
-	
-	$Camera3D.position.y = -position.y
+			Transition.change_scene_to("res://scenes/level.tscn")
 	
 	if velocity.y < 0:
 		$Bird.rotation_degrees.z = velocity.y * 10
 	else:
 		$Bird.rotation_degrees.z = velocity.y * 6
+	#old cam angle: fov = 60; position = Vector3(1,0,7)
+	$Camera3D.position.y = -position.y

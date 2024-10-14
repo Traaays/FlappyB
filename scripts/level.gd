@@ -1,5 +1,7 @@
 extends Node3D
 
+class_name level
+
 @onready var flappyGuy = $Flappy
 @onready var game_over_canvas = $GameOverCanvas
 
@@ -7,20 +9,12 @@ extends Node3D
 @onready var score_label = $GameOverCanvas/Rect/Score
 @onready var best_label = $GameOverCanvas/Rect/Best
 
+static var highscore = 0
 var score = 0
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
-	var pipe = load("res://scenes/pipes.tscn").instantiate()
-	pipe.position.y = pipe.rand.randf_range(-1.5,2.5)
-	pipe.position.x = 4
-	add_child(pipe)
+	$Pipe.position.y = $Pipe.rand.randf_range(-1.5,2.5)
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
-	$Area3D/floor.position.x = flappyGuy.position.x
+	$Ground/floor.position.x = flappyGuy.position.x
 	$ScoreCanvas/Label.text = str(score)
-	
-static func fuckyou():
-	print("ö")

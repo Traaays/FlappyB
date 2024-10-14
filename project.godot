@@ -13,7 +13,20 @@ config_version=5
 config/name="FlappyB"
 run/main_scene="res://scenes/level.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
+run/max_fps=120
+boot_splash/bg_color=Color(0.443137, 0.776471, 0.815686, 1)
+boot_splash/show_image=false
+boot_splash/fullsize=false
+boot_splash/use_filter=false
 config/icon="res://assets/icon.png"
+
+[audio]
+
+buses/default_bus_layout=""
+
+[autoload]
+
+Transition="*res://scenes/transition.tscn"
 
 [display]
 
@@ -24,10 +37,6 @@ window/size/window_height_override=960
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 window/vsync/vsync_mode=0
-
-[global]
-
-highscore=0
 
 [input]
 
